@@ -1,5 +1,7 @@
 <h2>All books</h2>
 
+<div id='flash'><%= flash.inspect %></div>
+<div id='message'><%= message %></div>
 <% if books.any? %>
   <div id="books">
     <% books.each do |book| %>

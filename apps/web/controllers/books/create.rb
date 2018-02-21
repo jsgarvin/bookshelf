@@ -1,6 +1,7 @@
 module Web::Controllers::Books
   class Create
     include Web::Action
+    include Hanami::Action::Session
 
     expose :book
 
@@ -14,7 +15,7 @@ module Web::Controllers::Books
     def call(params)
       if params.valid?
         @book = BookRepository.new.create(params[:book])
-
+        flash[:info] = "Book created successfully."
         redirect_to routes.books_path
       else
         self.status = 422
